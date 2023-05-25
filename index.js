@@ -2,11 +2,13 @@
 const { request, response } = require('express')
 const express = require('express')
 const uuid = require('uuid')
+const cors = require('cors')
 
 
 const port = 3001
 const app = express()
 app.use(express.json())
+app.use(cors()) // sem cors: ele vai bloquearo acesso no meu back-end
 
 
 
@@ -22,7 +24,7 @@ const checkUserId = (request, response, next) => {
 
     }
     request.userIndex = index
-    request.userId = id 
+    request.userId = id  
 
     next() // essa é uma estrutura "Middleware"
 }
